@@ -11,6 +11,17 @@ For migration information, you can always have a look at https://liip-drifter.re
 ### Added
 - Virtualenv role: add `pip_requirements_dir` option to automatically compile `.in` requirements
 
+## Unreleased
+
+### Added
+- PHP role: Supports PHP 7.1
+
+### Changed
+- PHP role: Changed the packages repo from the discontinued dotdeb.org to deb.sury.org
+- PHP role: xdebug and imagick for PHP 7.x are taken from the repo and not compiled anymore
+
+### Fixed
+
 ## [1.2.0] - 2017-03-28
 
 ### Added
