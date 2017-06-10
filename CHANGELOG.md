@@ -17,6 +17,7 @@ For migration information, you can always have a look at https://liip-drifter.re
 ## [1.3.0] - 2017-04-26
 
 ### Added
+- Virtualbox: allow use of Virtualbox shared folders besides nfs
 - Virtualenv role: add `pip_requirements_dir` option to automatically compile `.in` requirements
 - PHP role: add support for PHP 7.1
 - Gulp role: add `gulp_create_config` to make gulp.config.js file creation optional
