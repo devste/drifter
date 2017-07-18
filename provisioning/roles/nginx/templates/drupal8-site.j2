@@ -1,4 +1,4 @@
-{% extends "default-site.j2" %}
+{% extends "nginx/templates/default-site.j2" %}
 
 {% block extra %}
     {{ super() }}
@@ -9,6 +9,18 @@
     }
 
     location ~ ^/sites/.*/private/ {
+        return 403;
+    }
+
+    # Allow "Well-Known URIs" as per RFC 5785
+    location ~* ^/.well-known/ {
+        allow all;
+    }
+
+    # Block access to "hidden" files and directories whose names begin with a
+    # period. This includes directories used by version control systems such
+    # as Subversion or Git to store control files.
+    location ~ (^|/)\. {
         return 403;
     }
 
@@ -33,9 +45,9 @@
         try_files $uri /index.php?$query_string;
     }
 
-     location @rewrite {
-         rewrite ^ /index.php;
-     }
+    location @rewrite {
+        rewrite ^/(.*)$ /index.php?q=$1;
+    }
 
     # In Drupal 8, we must also match new paths where the '.php' appears in
     # the middle, such as update.php/selection. The rule we use is strict,
@@ -51,5 +63,4 @@
     location ~ '\.php$|^/update.php' {
         include conf.d/partials/_php_fpm.conf;
     }
-
 {% endblock %}

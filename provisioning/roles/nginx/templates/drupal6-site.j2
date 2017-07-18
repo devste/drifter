@@ -1,4 +1,4 @@
-{% extends "php-site.j2" %}
+{% extends "nginx/templates/php-site.j2" %}
 
 {% block extra %}
     {{ super() }}
@@ -9,6 +9,18 @@
     }
 
     location ~ ^/sites/.*/private/ {
+        return 403;
+    }
+
+    # Allow "Well-Known URIs" as per RFC 5785
+    location ~* ^/.well-known/ {
+        allow all;
+    }
+
+    # Block access to "hidden" files and directories whose names begin with a
+    # period. This includes directories used by version control systems such
+    # as Subversion or Git to store control files.
+    location ~ (^|/)\. {
         return 403;
     }
 
@@ -27,7 +39,7 @@
         try_files $uri @rewrite;
     }
 
-     location @rewrite {
-         rewrite ^ /index.php;
-     }
+    location @rewrite {
+        rewrite ^/(.*)$ /index.php?q=$1;
+    }
 {% endblock %}

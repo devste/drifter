@@ -8,17 +8,23 @@ For migration information, you can always have a look at https://liip-drifter.re
 
 ## Unreleased
 
+### Added
+- Virtualbox: allow use of Virtualbox shared folders besides nfs
+
 ### Changed
 - Gulp role: Webpack now uses "cheap-module-source-map" as devtool
+- php-xdebug role: add `xdebug_idekey` configuration option
+- Nginx role: allow to extend templates from outside the templates directory
 
 ### Fixed
 - Mysql role: use become to create database and user. Fixes problem on xenial
 - PHP role: don't download surby.org gpg key, when not needed. Fixes problem on wheezy
+- MySQL role: don't install mysql upstream repository if a newer version is already installed.
+- Nginx role: fix Drupal templates and rewrite rule
 
 ## [1.3.0] - 2017-04-26
 
 ### Added
-- Virtualbox: allow use of Virtualbox shared folders besides nfs
 - Virtualenv role: add `pip_requirements_dir` option to automatically compile `.in` requirements
 - PHP role: add support for PHP 7.1
 - Gulp role: add `gulp_create_config` to make gulp.config.js file creation optional
