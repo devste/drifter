@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# This command wraps around the real drifter cli
+# and is copied into the root of the project
+
+BASE=$(pwd)
+VIRTDIR="virtualization"
+REPODIR="drifter"
+
+CLIDIR="$BASE/$VIRTDIR/$REPODIR"
+. $CLIDIR/drifter_cli.sh "$@"
