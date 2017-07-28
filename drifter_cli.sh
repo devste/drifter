@@ -15,14 +15,14 @@ for i in `ls ${CLILIBDIR}/_*.sh`; do
     source $i;
 done
 
-# Load commands
+# Load command shell scripts
+# Store list of commands in CLI_COMMANDS
 for i in `ls ${CLILIBDIR}/cmd_*.sh`; do
     source $i;
+    REMOVED_END=${i%.sh}
+    COMMAND_NAME=${REMOVED_END#${CLILIBDIR}/cmd_}
+    CLI_COMMANDS+=" ${COMMAND_NAME}"
 done
-
-# TODO: automate this bit by parsing the file names 'drifter_cli/cmd_*.sh'
-# With several values: CLI_COMMANDS="install update"
-CLI_COMMANDS="help update"
 
 COMMAND=$1;
 CMD_OPTION=$2;
