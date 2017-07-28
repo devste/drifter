@@ -25,13 +25,16 @@ To write a command for the drifter CLI, create a bash script in the directory `d
 
     cmd_<commandname>.sh
 
-Inside this file you should write at least three functions that will be called by the drifter CLI:
+Inside this file you should write at least the main function that will be called by drifter CLI:
 
-0. `description_<commandname>`
-0. `help_<commandname>`
 0. `cmd_<commandname>`
 
 You should never execute code directly in the shell script, but wrap all your work in functions that are called from `cmd_<commandname>`
+
+You should also provide a short description and a help text by creating two variables (in lowercase letters):
+
+0. `desc_<commandname>`
+0. `help_<commandname>`
 
 Todo
 ----

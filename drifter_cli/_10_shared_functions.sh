@@ -8,10 +8,10 @@ Drifter CLI - install and update drifter
 Usage: ./drifter <command> [option]
 
 Command can be
-    help - this screen
-    help <command> - help on a specific command";
+";
     for i in $CLI_COMMANDS; do
-        echo -n "    $i - "; description_$i;
+        VAR_FOR_HELP="desc_$i"
+        echo "    $i - ${!VAR_FOR_HELP}";
     done
 echo -en "\n";
 }

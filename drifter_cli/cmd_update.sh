@@ -1,19 +1,13 @@
 # Description of this command
-description_update(){
-    echo "Updates the drifter configuration in your project";
-}
-
-# Help on this command
-help_update(){
-    echo "
+desc_update="Updates the drifter configuration in your project"
+help_update="
 Updates the configuration files in your project directory from new dist files
 in drifter. Overwrites your existing configuration, so you will have to 
 manually correct differences.
 
 The command checks the git status of your project configuration files and will
 refuse to overwrite them if they are not in a clean state.
-";
-}
+"
 
 cmd_update(){
     update_check_files;

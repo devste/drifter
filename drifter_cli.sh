@@ -22,7 +22,7 @@ done
 
 # TODO: automate this bit by parsing the file names 'drifter_cli/cmd_*.sh'
 # With several values: CLI_COMMANDS="install update"
-CLI_COMMANDS="update"
+CLI_COMMANDS="help update"
 
 COMMAND=$1;
 CMD_OPTION=$2;
@@ -34,10 +34,6 @@ CLI_COMMANDS_FOR_CASE="@(`echo $CLI_COMMANDS | sed 's/\ /\|/g'`)"
 
 case $COMMAND in
     $CLI_COMMANDS_FOR_CASE ) cmd_$COMMAND;;
-    help )
-        if [ -n $CMD_OPTION ] ; then help_$CMD_OPTION ; fi
-        if [ -z $CMD_OPTION ] ; then usage ; fi
-        ;;
     * ) usage; exit 1;;
 esac
 
